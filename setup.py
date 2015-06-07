@@ -1,5 +1,6 @@
 import os
 import pip
+import uuid
 from setuptools import setup
 from pip.req import parse_requirements
 
@@ -10,7 +11,7 @@ def read(file):
 
 def read_requirements(file):
     """Return a list of requirements from the given requirements file"""
-    return [str(ir.req) for ir in parse_requirements(file)]
+    return [str(ir.req) for ir in parse_requirements(file, session=uuid.uuid1())]
 
 
 setup(
